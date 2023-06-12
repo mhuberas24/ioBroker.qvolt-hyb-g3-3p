@@ -1,0 +1,111 @@
+{
+    "common": {
+        "name": "qvolt-hyb-g3-3p",
+        "version": "0.0.1",
+        "news": {
+            "0.0.1": {
+                "en": "initial release",
+                "de": "Erstveröffentlichung",
+                "ru": "Начальная версия",
+                "pt": "lançamento inicial",
+                "nl": "Eerste uitgave",
+                "fr": "Première version",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "Pierwsze wydanie",
+                "uk": "Початкова версія",
+                "zh-cn": "首次出版"
+            }
+        },
+        "title": "Q.VOLT HYB-G3-3P",
+        "titleLang": {
+            "en": "Q.VOLT HYB-G3-3P",
+            "de": "Q.VOLT HYB-G3-3P",
+            "ru": "Q.VOLT HYB-G3-3P",
+            "pt": "Q.VOLT HYB-G3-3P",
+            "nl": "Q.VOLT HYB-G3-3P",
+            "fr": "Q.VOLT HYB-G3-3P",
+            "it": "Q.VOLT HYB-G3-3P",
+            "es": "Q.VOLTIOS HYB-G3-3P",
+            "pl": "Q.VOLT HYB-G3-3P",
+            "uk": "Q.VOLT HYB-G3-3P",
+            "zh-cn": "Q.VOLT HYB-G3-3P"
+        },
+        "desc": {
+            "en": "Q.VOLT_HYB-G3-3P Local WR Data",
+            "de": "Q.VOLT_HYB-G3-3P Lokale WR-Daten",
+            "ru": "Q.VOLT_HYB-G3-3P Локальные данные WR",
+            "pt": "Q.VOLT_HYB-G3-3P Dados WR locais",
+            "nl": "Q.VOLT_HYB-G3-3P Lokale WR-gegevens",
+            "fr": "Q.VOLT_HYB-G3-3P Données WR locales",
+            "it": "Q.VOLT_HYB-G3-3P Dati WR locali",
+            "es": "Q.VOLT_HYB-G3-3P Datos WR locales",
+            "pl": "Q.VOLT_HYB-G3-3P Lokalne dane WR",
+            "uk": "Q.VOLT_HYB-G3-3P Локальні дані WR",
+            "zh-cn": "Q.VOLT_HYB-G3-3P 本地写数据"
+        },
+        "authors": [
+            "redparkz <mail@huber-michael.com>"
+        ],
+        "keywords": [
+            "ioBroker",
+            "template",
+            "Smart Home",
+            "home automation"
+        ],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "main": "main.js",
+        "icon": "qvolt-hyb-g3-3p.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/mhuberas24/ioBroker.qvolt-hyb-g3-3p/main/admin/qvolt-hyb-g3-3p.png",
+        "readme": "https://github.com/mhuberas24/ioBroker.qvolt-hyb-g3-3p/blob/main/README.md",
+        "loglevel": "info",
+        "mode": "daemon",
+        "type": "energy",
+        "compact": true,
+        "connectionType": "local",
+        "dataSource": "poll",
+        "adminUI": {
+            "config": "json"
+        },
+        "dependencies": [
+            {
+                "js-controller": ">=3.3.22"
+            }
+        ],
+        "globalDependencies": [
+            {
+                "admin": ">=5.1.13"
+            }
+        ]
+    },
+    "native": {
+        "ip": "",
+        "pwd": ""
+    },
+    "objects": [],
+    "instanceObjects": [
+        {
+            "_id": "info",
+            "type": "channel",
+            "common": {
+                "name": "Information"
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.connection",
+            "type": "state",
+            "common": {
+                "role": "indicator.connected",
+                "name": "Device or service connected",
+                "type": "boolean",
+                "read": true,
+                "write": false,
+                "def": false
+            },
+            "native": {}
+        }
+    ]
+}

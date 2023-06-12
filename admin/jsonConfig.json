@@ -1,0 +1,16 @@
+{
+    "i18n": true,
+    "type": "panel",
+    "items": {
+        "ip": {
+            "type": "text",
+            "label": "ip",
+            "newLine": true
+        },
+        "pwd": {
+            "type": "password",
+            "label": "pwd",
+            "newLine": true
+        }
+    }
+}
