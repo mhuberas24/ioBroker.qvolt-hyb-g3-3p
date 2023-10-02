@@ -100,16 +100,15 @@ function twoway_div100(val) {
 
 async function requestAPI() {
     return new Promise(async (resolve) => {
-        const solaxURL = adapter.config.ip; //`http://192.168.178.114`;
+        const solaxURL = adapter.config.ip; //
         //const solaxURL = (`https://www.eu.solaxcloud.com/proxyApp/proxy/api/getRealtimeInfo.do?tokenId=${adapter.config.apiToken}&sn=${adapter.config.serialNumber}`);
-
         try {
             // @ts-ignore
             const solaxRequest = await axios.post(
                 solaxURL,
                 new URLSearchParams({
                     optType: 'ReadRealTimeData',
-                    pwd: adapter.config.password, //'SXRATU6EB5',
+                    pwd: adapter.config.password, //
                 }),
             );
             // adapter.log.debug(`Axios Status: ${solaxRequest.status}`);
@@ -528,11 +527,15 @@ async function main() {
 
     await adapter.setStateAsync('info.connectType', adapterMode, true);
 
-    adapter.log.debug(`Solax is started in ${adapterMode}-mode`);
-
-    fillData();
+    if (!adapter.config.password) {
+        return adapter.log.error('Password must be set');
+    }
+    if (!adapter.config.ip) {
+        return adapter.log.error('ip adress must be set');
+    }
     const requestInterval = adapter.config.requestInterval || 1;
-
+    adapter.log.debug('API Request started ...');
+    fillData();
     adapter.log.debug(`Request Interval: ${requestInterval} minute(s)`);
 
     requestTimer = setInterval(async () => {
