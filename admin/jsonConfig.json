@@ -5,11 +5,19 @@
         "ip": {
             "type": "text",
             "label": "ip",
+            "help": "The local IP Adresse of the inverter, e.g http://192.168.178.114",
             "newLine": true
         },
-        "pwd": {
+        "password": {
             "type": "password",
-            "label": "pwd",
+            "label": "Password",
+            "help": "The serial number of the qcells inverter",
+            "newLine": true
+        },
+        "requestInterval": {
+            "type": "number",
+            "label": "Poll interval",
+            "help": "The interval in minutes, e.g. 1 will fetch new data every minute",
             "newLine": true
         }
     }

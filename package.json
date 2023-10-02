@@ -1,6 +1,6 @@
 {
   "name": "iobroker.qvolt-hyb-g3-3p",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Q.VOLT_HYB-G3-3P Local WR Data",
   "author": {
     "name": "redparkz",

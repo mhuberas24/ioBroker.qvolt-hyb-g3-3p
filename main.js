@@ -100,7 +100,7 @@ function twoway_div100(val) {
 
 async function requestAPI() {
     return new Promise(async (resolve) => {
-        const solaxURL = `http://192.168.178.114`;
+        const solaxURL = adapter.config.ip; //`http://192.168.178.114`;
         //const solaxURL = (`https://www.eu.solaxcloud.com/proxyApp/proxy/api/getRealtimeInfo.do?tokenId=${adapter.config.apiToken}&sn=${adapter.config.serialNumber}`);
 
         try {
@@ -109,7 +109,7 @@ async function requestAPI() {
                 solaxURL,
                 new URLSearchParams({
                     optType: 'ReadRealTimeData',
-                    pwd: 'SXRATU6EB5',
+                    pwd: adapter.config.password, //'SXRATU6EB5',
                 }),
             );
             // adapter.log.debug(`Axios Status: ${solaxRequest.status}`);
@@ -241,7 +241,7 @@ async function fillData() {
                 await adapter.setStateAsync('todays.consumption', div100(solaxRequest.data.Data[92]), true);
             } else {
                 await adapter.setStateAsync('info.connection', false, true);
-                adapter.log.debug('SolaX API is currently unavailable');
+                adapter.log.debug('Local API is currently unavailable');
             }
         } catch (err) {
             adapter.log.warn('request error: ' + err);
