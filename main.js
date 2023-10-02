@@ -1,3 +1,4 @@
+/* eslint-disable no-async-promise-executor */
 'use strict';
 
 // @ts-ignore
@@ -197,20 +198,44 @@ async function fillData() {
                 await adapter.setStateAsync('battery.temp', solaxRequest.data.Data[105], true);
                 await adapter.setStateAsync('battery.remainingEnergy', div10(solaxRequest.data.Data[106]), true);
                 await adapter.setStateAsync('battery.operationmode', batmode[solaxRequest.data.Data[168]], true);
-                await adapter.setStateAsync('total.energy', div10(solaxRequest.data.Data[68] + 65536 * solaxRequest.data.Data[69]), true);
+                await adapter.setStateAsync(
+                    'total.energy',
+                    div10(solaxRequest.data.Data[68] + 65536 * solaxRequest.data.Data[69]),
+                    true,
+                );
                 await adapter.setStateAsync('total.energyResets', solaxRequest.data.Data[69], true);
-                await adapter.setStateAsync('total.batteryDischargeEnergy', div10(solaxRequest.data.Data[74] + 65536*solaxRequest.data.Data[75]), true);
+                await adapter.setStateAsync(
+                    'total.batteryDischargeEnergy',
+                    div10(solaxRequest.data.Data[74] + 65536 * solaxRequest.data.Data[75]),
+                    true,
+                );
                 await adapter.setStateAsync('total.batteryDischargeEnergyResets', solaxRequest.data.Data[75], true);
-                await adapter.setStateAsync('total.batteryChargeEnergy', div10(solaxRequest.data.Data[76]+ 65536*solaxRequest.data.Data[77]), true);
+                await adapter.setStateAsync(
+                    'total.batteryChargeEnergy',
+                    div10(solaxRequest.data.Data[76] + 65536 * solaxRequest.data.Data[77]),
+                    true,
+                );
                 await adapter.setStateAsync('total.batteryChargeEnergyResets', solaxRequest.data.Data[77], true);
                 await adapter.setStateAsync('todays.batteryDischargeEnergy', div10(solaxRequest.data.Data[78]), true);
                 await adapter.setStateAsync('todays.batteryChargeEnergy', div10(solaxRequest.data.Data[79]), true);
-                await adapter.setStateAsync('total.pvEnergy', div10(solaxRequest.data.Data[80] + solaxRequest.data.Data[81]*65536), true);
-                await adapter.setStateAsync('total.feedinEnergy', div100(solaxRequest.data.Data[86] + solaxRequest.data.Data[87]*65536), true);
+                await adapter.setStateAsync(
+                    'total.pvEnergy',
+                    div10(solaxRequest.data.Data[80] + solaxRequest.data.Data[81] * 65536),
+                    true,
+                );
+                await adapter.setStateAsync(
+                    'total.feedinEnergy',
+                    div100(solaxRequest.data.Data[86] + solaxRequest.data.Data[87] * 65536),
+                    true,
+                );
                 await adapter.setStateAsync('total.feedinEnergyResets', solaxRequest.data.Data[87], true);
                 await adapter.setStateAsync('total.pvEnergyResets', solaxRequest.data.Data[81], true);
                 await adapter.setStateAsync('todays.energy', div10(solaxRequest.data.Data[82]), true);
-                await adapter.setStateAsync('total.consumption', div100(solaxRequest.data.Data[88] + 65536*solaxRequest.data.Data[89]), true);
+                await adapter.setStateAsync(
+                    'total.consumption',
+                    div100(solaxRequest.data.Data[88] + 65536 * solaxRequest.data.Data[89]),
+                    true,
+                );
                 await adapter.setStateAsync('total.consumptionResets', solaxRequest.data.Data[89], true);
                 await adapter.setStateAsync('todays.feedinEnergy', div100(solaxRequest.data.Data[90]), true);
                 await adapter.setStateAsync('todays.consumption', div100(solaxRequest.data.Data[92]), true);
@@ -479,12 +504,12 @@ async function main() {
         common: { name: 'Total Consumption Resets', type: 'number', role: 'value', unit: '' },
         native: {},
     });
-        await adapter.setObjectNotExistsAsync('total.feedinEnergy', {
+    await adapter.setObjectNotExistsAsync('total.feedinEnergy', {
         type: 'state',
         common: { name: 'Total Feed-In Energy', type: 'number', role: 'value', unit: 'kWh' },
         native: {},
     });
-            await adapter.setObjectNotExistsAsync('total.feedinEnergyResets', {
+    await adapter.setObjectNotExistsAsync('total.feedinEnergyResets', {
         type: 'state',
         common: { name: 'Total Feed-In Energy Resets', type: 'number', role: 'value', unit: '' },
         native: {},
